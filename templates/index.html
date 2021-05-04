@@ -1,0 +1,79 @@
+<!doctype>
+<html>
+    <title>Upload and Excel Merge</title>
+    <!---HEAD SECTION-->
+    <head>
+        <!--LINK STYLESHEET-->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+        
+        <!---JAVACRIPT FOR FILEUPLOAD LIST-->
+        <script>
+            updateList = function() {
+                var input = document.getElementById('file');
+                var output = document.getElementById('fileList');
+                var children = "";
+                for (var i = 0; i < input.files.length; i++) {
+                children += '<li>' + input.files.item(i).name + '</li>';
+                output.innerHTML += '<ul>'+children+'</ul>';
+                }
+            }
+        </script>
+    </head>
+    <!---HEAD SECTION END-->
+    <!---BODY SECTION START-->
+    <body>
+        <div id = "container">
+            <!---Header-->
+            <header>
+                <h1>Data Upload and Excel Merging using Flask Application</h1>
+            </header>
+            <!---Header End-->
+            <!--Body Starts-->
+                <div id = "headings">
+                    <h1> About Data Upload and Excel Merging</h1>
+                        <p>
+                            <ul>
+                                <li>Data upload is a tool designed to upload an excel sheet</li>
+                                <li>After uploading, one can view the content in the webpage</li>
+                                <li>To uplaod the first excel file to the database, click on "Upload"</li>
+                                <li>In order to merge any excel file to the first file, please choose file and upload, then click on "merge" 
+                                <li>Merged file can be viewed by clicking "merge"</li>
+                            </ul>
+                        </p>
+                </div>  
+
+                
+            
+                <!--******UPLOAD FILE----VIEW----SAVE TO DATABASE*******-->
+                
+                    <div id = "filing">
+                        <form class="" action="save" method="post">
+                            <label for="firstfile"><b>Select your first file:</b></label>
+                        <input type="file" name="file" value=""/>
+                        
+                        <p>View and Upload to Database   <input type="submit" name="file" value="Upload"></p>
+
+                    </form>
+
+                    <!--******MERGE THE UPLOADED FILES*******-->
+                    
+                        <form class="" action="master" method="post">
+                            <label for="secondfile"><b>Select your second file to merge:</b></label>
+                                <input type="file" name="file" id="file" multiple = "" enctype="multipart/form-data" 
+                                onchange="javascript:updateList()" />
+                            <p>The Selected File is:</p>
+                                <ul id="fileList"></ul>
+                            <input type="submit" name="submit" value="Click to Merge">  
+                        </form>
+                    </div>
+                
+            <!--Body Ends-->
+            <!--Footer Starts-->
+            <footer>
+                <p></p>
+            </footer>
+            <!--Footer Ends-->        
+        </div> <!--Container ends-->
+        
+    </body>
+</html> 

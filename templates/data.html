@@ -1,0 +1,36 @@
+<!doctype>
+<html>
+    <title>Showing the table </title>
+    <head>
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+    </head>
+    <body>
+      <div id = "container">
+        <!---Header-->
+        <header>
+          <h1>Data Upload and Excel Merging using Flask Application</h1>
+        </header>
+        <!---Header End-->
+          
+      
+        <div id="tablein">
+          <h2>File uploaded successfully to database!!</h2>
+              {{ data | safe }}
+            
+          <p>
+            <form>
+            <input type="button" value="Go back!" onclick="history.back()">
+            </form>
+          </p>
+        </div>
+        <!--Footer Starts-->
+        <footer>
+          <p></p>
+        </footer>
+        <!--Footer Ends-->  
+      </div><!--container close-->
+    </body>
+
+</html>
+
+
